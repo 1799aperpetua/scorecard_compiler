@@ -10,15 +10,23 @@ class App(tk.Frame):
         self.create_widgets()
 
         self.current_master_file = ''
+        self.current_chosen_dir = ''
+
+    def open_directory(self):
+        dir = filedialog.askdirectory()
+        print(dir)
+        self.current_chosen_dir = str(dir)
+        tk.Label(self, text = 'The package selected is located at: ' + self.current_chosen_dir).pack(padx = 10, pady = 5)
 
     def open_file(self):
         file = filedialog.askopenfile(mode = 'r')
 
         if file:
             filepath = os.path.abspath(file.name)
-            self.current_master_file = filepath
-            tk.Label(self, text = 'The file is located at : ' + str(filepath)).pack(padx = 10, pady = 20)
-
+            self.current_master_file = str(filepath)
+            print(self.current_master_file)
+            tk.Label(self, text = 'The file selected is located at: ' + str(file.name)).pack(padx = 10, pady = 5)
+            
 
     def create_widgets(self):
 
@@ -34,10 +42,11 @@ class App(tk.Frame):
 
         # Master file input
         self.master_file_label = tk.Label(self, text = 'Which file would you like to add a package of scorecard sheets to?').pack(padx = 10, pady = (10, 4))
-        tk.Button(self, text = "Browse", command = self.open_file).pack(padx = 10, pady = (0, 10))
+        tk.Button(self, text = "Select Master File", command = self.open_file).pack(padx = 10, pady = (0, 10))
 
         self.select_directory_label = tk.Label(self, text = 'What folder are your scorecards located in?').pack( padx = 10, pady = (10, 4))
-        tk.Button(self, text = "Browse", command = self.open_file).pack(padx = 10, pady = (0, 20))
+        tk.Button(self, text = "Select Package", command = self.open_directory).pack(padx = 10, pady = (0, 20))
+        
 
 
 
