@@ -132,6 +132,11 @@ class App(ctk.CTk):
 
                         print(f'Scorecard submitted for: {name}')
 
+
+                        # Why don't we have the user choose what to name the file and we'll just have a default that gets passed in here.  Create another entry field
+                        ''' I'd also like to create a grid, and pack items within frames inside of the grid.  I'm going to create a test file and play around with designing that.
+                            The reason is because I don't want the display to the user just being throw at them, I'd like it to look pretty.  However, functionality is key I need to finish that before doing this
+                        '''
                         new_filename = 'newlyCreatedBook.xlsx'
 
                         master_wb.save(new_filename)
