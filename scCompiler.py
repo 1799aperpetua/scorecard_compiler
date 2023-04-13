@@ -129,6 +129,7 @@ class App(ctk.CTk):
 
                         # Transfer the currently accessed sheet, into the newly created "submitterInitials-scorecard" sheet
                         CopySheet.copy_sheet(new_master_sheet, target_sheet)
+                        CopySheet.copy_sheet(target_sheet, new_master_sheet)
 
                         print(f'Scorecard submitted for: {name}')
 
